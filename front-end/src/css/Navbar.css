@@ -1,0 +1,161 @@
+.page {
+	display: flex;
+	flex-direction: column;
+}
+
+.-header {
+	width: 100%;
+	max-height: 50px;
+	position: relative;
+	flex: 1;
+}
+
+.nav {
+	position: absolute;
+	width: 100%;	
+	display: flex;
+	text-align: center;
+}
+
+.nav-header {
+/*	background-color: #f79361;*/
+	background-color: #F26625;
+	width: 100%;
+/*	min-height: 50px;*/
+	min-height: 70px;
+	display: flex;
+}
+
+.nav-logo {
+/*	background-color: #f79361;*/
+	background-color: #F26625;
+	max-width: 125px;
+	max-height: 50px;
+	display: inline-block;
+	width: 100%;
+	overflow: hidden;
+}
+
+.nav-header-logo {
+	flex: 1;
+	margin: 0 auto;
+}
+
+.nav-header-menus {
+	flex: 1;
+	display:flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.nav-link-menu {
+/*	color: #f79361;*/
+	color: #F26625;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	border: none;
+	background-color: white;
+	font-size: 1.5vh;
+	font-family: CircularStd;
+}
+
+
+.nav-link-menu:link {
+	text-decoration: none;
+}
+
+.nav-link:link{
+/*	color: #f79361;*/
+	color: #F26625;;
+	text-decoration: none;
+}
+
+.nav-link-outside{
+	color: white;
+	text-decoration: none;
+	font-size: 1.5vh;
+	font-family: CircularStd;
+	text-align: center;
+	margin-right: 2vmin;
+	margin-top: 18px;
+}
+
+.nav-link-outside:link{
+	color: white;
+	text-decoration: none;
+}
+
+.nav-link-outside:hover{
+	color: white;
+	text-decoration: none;
+}
+	
+.nav-link-menu:hover {
+/*	background-color: #f79361;*/
+	background-color: #F26625;
+	color: white;
+	opacity: 0.85;
+	width: 100%;
+	border: none;
+}
+
+.nav-footer {
+/*	background-color: #f79361;*/
+	background-color: #F26625;
+	min-height: 50px;
+	max-height: 70px;
+	width: 100%;
+	text-align: center;
+	font-size: 10px;
+	color: white;
+	flex: 1;
+	font-family: CircularStd;
+	text-decoration: none;
+}
+
+.nav-menu {
+/*	background-color: #f79361;*/
+	background-color: #F26625;
+	max-width: 30px;
+	max-height: 30px;
+	display: inline-block;
+	width: 100%;
+	margin: 10px;
+}
+
+.nav-dropdown {
+	position: relative;
+  	display: inline-block;
+  	z-index: 2;
+}
+
+.nav-dropdown-button {
+	cursor: pointer;
+}
+
+.nav-dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+	right: 0;
+}
+
+.nav-dropdown:hover .nav-dropdown-content {
+	display: block;
+}
+
+.footerlink {
+	margin-left: 15px;
+	margin-right: 15px;
+	color: white;
+	text-decoration: none;
+}
+.footerlink:link {
+	color: white;
+	text-decoration: none;
+}

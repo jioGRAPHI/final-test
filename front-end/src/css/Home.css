@@ -1,0 +1,263 @@
+.homeul {
+	list-style:none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.homep {
+	margin-left: 5vmin;
+	text-align: left;
+}
+
+.feed {
+	text-align: center;
+	flex-wrap: wrap;
+	margin-top: 5vmin;
+	margin-bottom: 5vmin;
+}
+
+.homefeed {
+	background-color: white;
+	min-width: 85%;
+	min-height: 200px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 0;
+	display: inline-block;
+	flex-wrap: wrap;
+	flex: 2;
+}
+
+.homefeed-item {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.homefeedimages {
+	display: block;
+	object-fit: cover;
+	background-color: #949596;
+	width: 308px;
+	height: 250px;
+}
+
+.home-container {
+	flex: 1;
+	position: relative;
+	min-width: 250px;
+	min-height: 250px;
+	margin-left: 5vmin;
+	margin-right: 5vmin;
+	margin-bottom: 2vmin;
+	margin-top: 2vmin;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.home-overlay {
+	flex: 1;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 308px;
+	height: 250px;
+	opacity: 0;
+	transition: .3s ease;
+	text-align:center;
+	background-color: white;
+}
+
+.home-restodetails {
+	flex: 1;
+	color: black;
+	font-size: 5hmin;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	text-align: center;
+	font-family: CircularStd;
+}
+
+.home-container:hover .home-overlay {
+  	opacity: 1;
+}
+
+.home-seemore {
+	color: #afafaf;
+	text-decoration: none;
+}
+
+.home-seemore:link {
+	color: #afafaf;
+	text-decoration: none;
+}
+
+.home-link:link {
+	text-decoration: none;
+	color: white;
+}
+
+.home-featured{
+	background-color: #f9f9f9;
+	position: relative;
+	min-width: 100%;
+	min-height: 450px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	flex: 4;
+}
+
+.home-featuredoverlay {
+	width: auto;
+	height: auto;
+}
+
+.home-featuredimage{
+	object-fit: cover;
+	width: 100%;
+	height: 400px;
+	margin-top: 25px;
+}
+
+.home-featureddetails{
+	color: black;
+	background-color: rgba(255,255,255,0.95);
+	font-size: 5hmin;
+	position: absolute;
+	width: 35%;
+	top: 50%;
+	left: 75%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	text-align: center;
+	font-family: CircularStd;
+	display: inline-block;
+}
+
+.feed-title{
+  	color: darkred;
+	background-color: rgba(255,255,255,0.6);
+	font-size: 3vh;
+	position: absolute;
+	width: 18vmin;
+	top: 75%;
+	left: 75%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	text-align: center;
+	font-family: CircularStd;
+	display: inline-block;
+}
+
+.home-animate-fade {
+	position: relative;
+}
+
+.home-carousel {
+	z-index: 1;
+}
+
+.more{
+	margin-top: 10px;
+	width: 100%;
+	text-align: center;
+	display: inline-block;
+	flex-wrap: wrap;
+}
+
+.morep {
+	font-size: 25px;
+	font-family: CircularStd;
+}
+
+.morefeed-item {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+}
+
+.morefeedimages {
+	position: block;
+	width: 300px;
+	height: 250px;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.more-container {
+	flex: 1;
+	position: relative;
+	min-width: 250px;
+	max-width: 400px;
+	min-height: 250px;
+	max-height: 250px;
+	margin-top: 2vmin;
+	overflow: hidden;
+}
+
+.more-overlay {
+	flex: 1;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: auto;
+	height: auto;
+	opacity: 0;
+	transition: .3s ease;
+	text-align:center;
+	background-color: white;
+}
+
+.more-restodetails {
+	flex: 1;
+	color: black;
+	font-size: 5hmin;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	text-align: center;
+	font-family: CircularStd;
+}
+
+.more-container:hover .more-overlay {
+  	opacity: 1;
+}
+
+.more-link:link {
+	text-decoration: none;
+	color: white;
+}
+
+.restaurant-title{
+	font-size: 3vh;
+  	color: darkred;
+}
+
+.return-strings {
+	font-size: 2.5vh;
+	margin: 0;
+	padding: 0;
+  	font-family: CircularStd;
+}
+
+.return-strings2 {
+	font-size: 1.75vh;
+	margin: 0;
+	padding: 0;
+  	font-family: CircularStd;
+}

@@ -1,0 +1,11 @@
+source triggers/comment.sql;
+source triggers/cuisine.sql;
+source triggers/likes.sql;
+source triggers/open_days.sql;
+source triggers/photocomment.sql;
+source triggers/photorestaurant.sql;
+source triggers/rating.sql;
+source triggers/report.sql;
+source triggers/restaurant.sql;
+source triggers/user.sql;
+source triggers/photouser.sql;

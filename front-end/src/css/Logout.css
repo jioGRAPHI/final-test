@@ -1,0 +1,18 @@
+.logout-prompt{
+  width: 100%;
+  height: auto;
+  margin-top: 15%;
+  margin-bottom: 10px;
+  float: left;
+  font-size: 45px;
+  text-align: center;
+}
+
+@keyframes flickerAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+.logout-animate-flicker {
+    animation: flickerAnimation 1s infinite;
+}

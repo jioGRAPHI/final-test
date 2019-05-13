@@ -1,0 +1,80 @@
+.rand_bg {
+	padding-left: 15%;
+	padding-right: 10%;
+	display: flex;
+	width: 100%;
+	flex-flow: row wrap;
+	font-family: CircularStd;
+}
+
+.filter{
+	width: 15%;
+	list-style: none;
+	font-size: 10px;
+}
+
+
+
+.body{
+	width: 40%;
+
+}
+
+.info{
+	width: 15%;
+
+}
+	
+.restaurant_image{
+	margin-top: 5%;
+	width: 100%;
+}
+
+.body button{
+	margin-top: 2%;
+	margin-left: 18%;
+	background-color: #fff;
+	width: 60%;
+	font-size: 100%;
+	padding: 4%;
+	border: 2px solid #f79361;
+	border-radius: 2px;
+	font-family: CircularStd;
+}
+
+.info {
+	width: 30%;	
+	margin-top: 3.5%;
+	margin-left: 2%;
+	font-family: CircularStd;
+	text-align: center;
+	background-color: #f79361;
+	height: 40vh;
+}
+
+.info h5{
+	font-size: 25px;
+	padding-top: 3%;
+	text-decoration: underline;
+}
+
+.info h3{
+	font-size: 25px;
+	padding-top: 18%;
+}
+
+#rand_details{
+	display: none;
+	margin-top: 15%
+}
+
+#rand_default{
+	display: block;
+	margin-top: 35%;
+
+}
+
+.alert{
+	color: red;
+	font-size: 15px;
+}

@@ -1,0 +1,498 @@
+.profile-body {
+  width: 100%;
+}
+
+.profile-upperhalf {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile-bottomhalf {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile-restaurantimage {
+  min-width: 240px;
+  max-width: 720px;
+  max-height: 500px;
+  margin: 3vmin;
+  object-fit: cover;
+  flex: 3;
+}
+
+.profile-restaurantoverview {
+  color: black;
+  background-color: #F7F7F7;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 200px;
+  max-width: 360px;
+  max-height: 500px;
+  flex: 1;
+  margin: 3vmin;
+}
+
+.profile-restaurantoverview-content {
+  margin: 2vmin;
+  flex: 1;
+  font-family: CircularStd;
+}
+
+.profile-restaurantoverview-title {
+  font-size: 5vmin;
+  color: darkred;
+}
+
+.profile-restaurantinfo {
+  flex: 2;
+}
+
+.profile-sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 300px;
+  max-width: 500px;
+  margin: 3vmin;
+}
+
+.profile-restaurantdetails {
+  text-align: center;
+  background-color: #DADADA;
+  border-radius: 10px;
+  flex: 2;
+  max-width: 290px;
+  min-width: 290px;
+  max-height: 350px;
+  min-height: 350px;
+  margin: 2vmin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-maparea{
+  flex: 2;
+  max-width: 290px;
+  min-width: 290px;
+  max-height: 360px;
+  min-height: 240px;
+  margin: 2vmin;
+  display: inline-block;
+  overflow:hidden;
+  position :relative;
+}
+
+.profile-imgarea{
+  flex: 2;
+  max-width: 290px;
+  min-width: 290px;
+  max-height: 360px;
+  min-height: 240px;
+  margin: 2vmin;
+  display: inline-block;
+  overflow: hidden;
+  position :relative;
+}
+
+.profile-maparea a{
+  z-index: -3;
+}
+
+.profile-commentarea {
+  flex: 3;
+  min-width: 240px;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  margin: 3vmin;
+  align-items: center;
+}
+
+.profile-restaurantreviews {
+  width: 85%;
+  flex: 1;
+  margin: 2vmin;
+}
+.profile-details {
+  flex: 1;
+  margin: 2vmin;
+  font-family: CircularStd;
+}
+
+.profile-userreview {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.profile-existingreview {
+  padding: 1%;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #F1F1F1;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: CircularStd;
+}
+
+.profile-existingreview-userid {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.profile-existingreview-content {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  display: inline-block;
+}
+
+.textarea {
+  padding: 1%;
+  width: 98%;
+  border-radius: 10px;
+  background-color: white;
+  border-color: #f1f1f1;
+  border-width: 5px;
+  outline: none;
+  flex: 1;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  height: 150px;
+  font-family: CircularStd;
+}
+
+.profile-button {
+  color: #f79361;
+  text-decoration: none;
+  display: block;
+  max-width: 120px;
+  height: 40px;
+  border: solid;
+  border-color: #f79361;
+  background-color: white;
+  font-size: 1.75vh;
+  flex: 1;
+  margin: 2vmin;
+  border-radius: 10px;
+  font-family: CircularStd;
+}
+  
+.profile-button:hover {
+  background-color: #f79361;
+  color: white;
+  opacity: 0.85;
+  max-width: 120px;
+  border: solid;
+  border-color: #f79361;
+}
+
+.profile-buttons-div {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.report-div{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.report-select {
+  border-radius: 10px;
+  background-color: #f79361;
+  border-color: #f79361;
+  color: white;
+  flex: 1;
+  width: 150px;
+  min-height: 20px;
+  text-align: center;
+}
+
+.report-textarea {
+  flex: 1;
+  border-radius: 10px;
+  width: 280px;
+  min-height: 80px;
+  text-align: center;
+}
+
+.profile-radiobuttons-div {
+  min-width: 90%;
+  margin: 2vmin;
+  background-color: rgb(232, 232, 232, 0.5);
+}
+
+.profile-radiobutton {
+  border: solid;
+  color: #f79361;
+  border-color: #f79361;
+  background-color: white;
+  font-size: 1.5vh;
+  margin: 2vmin;
+  border-radius: 10px;
+  border-width: 2px;
+  font-family: CircularStd;
+}
+
+.profile-radiobutton:hover{
+  background-color: #f79361;
+  color: white;
+  opacity: 0.85;
+  max-width: 100px;
+  border: solid;
+  border-color: #f79361;
+  border-width: 2px;
+}
+
+.profile-deletecomment{
+  max-width: 100px;
+  max-height: 50px;
+  color: white;
+  text-decoration: none;
+  border: solid;
+  border-color: #D13B1A;
+  background-color: #D13B1A;
+  font-size: 1.75vh;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-family: CircularStd;
+  margin:5px;
+}
+
+.profile-deletecomment:hover {
+  background-color: white;
+  color: #D13B1A;
+  opacity: 0.85;
+  border: solid;
+  border-color: #D13B1A;
+  font-weight: bold;
+}
+
+.profile-editcomment{
+  max-width: 100px;
+  max-height: 50px;
+  color: white;
+  text-decoration: none;
+  border: solid;
+  border-color: #5dcc49;
+  background-color: #5dcc49;
+  font-size: 1.75vh;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-family: CircularStd;
+  margin:5px;
+}
+
+.profile-editcomment:hover {
+  background-color: white;
+  color: #5dcc49;
+  opacity: 0.85;
+  border: solid;
+  border-color: #5dcc49;
+  font-weight: bold;
+}
+
+.profile-submitreview{
+  max-width: 80px;
+  max-height: 40px;
+  color: white;
+  text-decoration: none;
+  border: solid;
+  border-color: #f79361;
+  background-color: #f79361;
+  font-size: 1.75vh;
+  border-radius: 10px;
+  align-content: center;
+  font-weight: bold;
+  flex: 1;
+  font-family: CircularStd;
+}
+
+.profile-report-button {
+  color: #D13B1A;
+  text-decoration: none;
+  display: block;
+  max-width: 100px;
+  height: 40px;
+  border: solid;
+  border-color: #D13B1A;
+  background-color: white;
+  font-size: 1.75vh;
+  flex: 1;
+  margin: 2vmin;
+  border-radius: 10px;
+  font-family: CircularStd;
+}
+  
+.profile-report-button:hover {
+  background-color: #D13B1A;
+  color: white;
+  opacity: 0.85;
+  max-width: 100px;
+  border: solid;
+  border-color: #D13B1A;
+}
+
+.profile-submitreview:hover {
+  background-color: white;
+  color: #f79361;
+  opacity: 0.85;
+  border: solid;
+  border-color: #f79361;
+  font-weight: bold;
+}
+
+.review-textarea{
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  background-color: white;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 2vmin;
+}
+
+.review-itemarea{
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  background-color: white;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exitModalButton {
+  max-width: 30px;
+  max-height: 30px;
+  margin-right: 5px;
+  color: #D13B1A;
+  text-decoration: none;
+  border: none;
+  font-size: 2.5vh;
+  font-weight: bold;
+  background-color: white;
+  font-family: CircularStd;
+}
+
+.profile-modal {
+  display: none;
+  position: absolute;
+  z-index: 1; 
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width:320px;
+}
+
+.profile-modal-content {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  margin: 15% auto;
+  border: 5px solid #888;
+  padding-top: 5%;
+  padding-left: 2.5%;
+  padding-bottom: 5%;
+  font-size: 1.5vmin;
+  font-family: CircularStd;
+}
+
+.edit-input {
+  border: 1px solid #bdc7d8;
+  border-radius: 5px;
+  text-align: center;
+  font-family: CircularStd;
+}
+
+.edit-input-div {
+  margin: 1vmin;
+  align-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-submit {
+  border-radius: 5px;
+  padding: 7px 20px;
+  margin: 10px;
+  font-family: CircularStd;
+  font-size: 12px;
+}
+
+.edit-dropdown {
+  border: 1px solid #bdc7d8;
+  border-radius: 5px;
+  padding: 6px 8px 6px 8px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-family: CircularStd;
+}
+
+.label {
+  font-size: 12px;
+  margin: 10px;
+  font-family: CircularStd;
+}
+
+.radio-label{
+  font-family: CircularStd;
+}
+
+.photo-comment{
+  width: 150px;
+  height: 150px;
+  background-size: contain;
+}
+
+.profile-map {
+  height: 200px;
+  border-radius: 10px;
+}
+
+.profile-map1{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.profile-innerDiv{
+  position: absolute;
+}
