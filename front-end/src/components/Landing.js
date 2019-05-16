@@ -126,6 +126,7 @@ class Landing extends Component {
             </Carousel.Item>
           </Carousel>
         </div>
+
       </div>
     );
   }

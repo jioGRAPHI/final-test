@@ -5,7 +5,7 @@ import logo from '../images/title with logo.png';
 import hammenu from '../images/hamburger-menu.png';
 import '../css/Navbar.css';
 
-class NavBar extends Component {
+class Navbar extends Component {
 
   constructor(props){
     super(props)
@@ -107,4 +107,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default Navbar;

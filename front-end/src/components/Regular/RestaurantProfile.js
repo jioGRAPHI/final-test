@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import mapboxgl from 'mapbox-gl'
 import ReactImageFallback from "react-image-fallback";
 import StarRatings from 'react-star-ratings';
+import Carousel from 'react-bootstrap/Carousel'
 
 import RestaurantReport from "./RestaurantReport.js";
 import "../../css/Profile.css";
 
+import temp_dp from '../../images/admin-photo.png'
 import notfound from '../../images/notfound.png'
 
 // import restaurant from "../../images/recent2.jpg";
@@ -61,7 +63,9 @@ class RestaurantProfile extends Component {
       comments: [],
       search_keyword: '',
       search_results: [],
-      resto_photos: []
+      resto_photos: [],
+      index: 0,
+      direction: null,
     }
 
     this.setReportVisiblityToTrue = this.setReportVisiblityToTrue.bind(this)
@@ -75,6 +79,7 @@ class RestaurantProfile extends Component {
     this.showRating = this.showRating.bind(this)
     this.handleStyleLoad = this.handleStyleLoad.bind(this)
     this.showModal = this.showModal.bind(this)
+    this.handleSelect = this.handleSelect.bind(this);
     this.exitModal = this.exitModal.bind(this)
 
     fetch('/view-restaurant/' + this.state.restaurant_id)
@@ -105,6 +110,13 @@ class RestaurantProfile extends Component {
     this.editComment = this.editComment.bind(this);
 
     this.getComments();
+  }
+
+  handleSelect(selectedIndex, e) {
+    this.setState({
+      index: selectedIndex,
+      direction: e.direction,
+    });
   }
 
   componentDidMount() {
@@ -411,6 +423,10 @@ class RestaurantProfile extends Component {
       restaurant_openingtime, 
       restaurant_closingtime, 
       restaurant_address, 
+      index, 
+      direction,
+      nextIcon,
+      prevIcon,
       // latitude, 
       // longitude 
     } = this.state
@@ -434,7 +450,9 @@ class RestaurantProfile extends Component {
                   <div className="profile-restaurantoverview">
 
                     <div className="profile-restaurantoverview-content">
-                      <h3 className="profile-restaurantoverview-title">{ restaurant_name }</h3>
+                      <div className="title-container">
+                        <h3 className="profile-restaurantoverview-title">{ restaurant_name }</h3>
+                      </div>
                       <p>{ restaurant_cuisine }</p>
                       <p className="return-strings"><b>{this.showPrice(restaurant_price)}</b></p>
                       &nbsp;
@@ -503,18 +521,32 @@ class RestaurantProfile extends Component {
                 </div>
 
                 <div className="profile-commentarea">
-                
-                  <div className="profile-imgarea">
+                    <div className="profile-imgarea">
 
-                    <h4> Photos </h4>
+                      <h4> Photos </h4>
 
-                    {this.state.resto_photos.map((photo) => {
-                      return (
-                      <img src = {photo.photo_path} alt ="alt"/>
-
-                        )
-                    })}
-                  </div>
+                      <Carousel 
+                        interval = {5000}
+                        controls = {true}
+                        indicators = {true}
+                        wrap = {true}
+                        fade = {false}
+                        activeIndex = {index}
+                        direction = {direction}
+                        onSelect = {this.handleSelect}
+                        nextIcon = {nextIcon} 
+                        prevIcon = {prevIcon}
+                        className="img-area-carousel"
+                      >
+                      {this.state.resto_photos.map((photo) => {
+                        return (
+                         <Carousel.Item className="profile-img-carousel"> 
+                          <img src = {photo.photo_path} alt ="alt"/>
+                         </Carousel.Item>
+                          )
+                      })}
+                      </Carousel>
+                    </div>
 
                   <div className="profile-restaurantreviews">
 
@@ -541,8 +573,12 @@ class RestaurantProfile extends Component {
 
                       {this.state.search_results.map((comment) => {
                           return <div className="profile-existingreview">
+                                  <div className="review-items">
+                                    <div className="post-item-userdetails">
+                                      <img className="post-user-dp" src={temp_dp}/>
                                       <b><i>{comment.username}</i></b>
                                       &nbsp;
+                                    </div>
                                       {/* if comment is done by user, user can edit or delete */}
                                       <div className="profile-existingreview-content">
                                           <i>{comment.content}</i><br/>
@@ -557,6 +593,7 @@ class RestaurantProfile extends Component {
                                             : null 
                                           }
                                       </div>
+                                    </div>
 
                                       { (comment.user_id===this.state.user_id)
                                         ? <p>
