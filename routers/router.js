@@ -64,6 +64,7 @@ module.exports = (app) =>{
 
 	// Rating
 	app.post('/rate', ratingController.rate);
+	app.post('/delete-rate', ratingController.deleteRate);
 	app.get('/check-if-rated/:restaurant_id/:user_id', ratingController.checkIfRated);
 	
 	// Photo 

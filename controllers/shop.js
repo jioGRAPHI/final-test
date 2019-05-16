@@ -186,6 +186,7 @@ exports.randomizerAdvanced = (req, res)=>{
 		var restaurants = []
 		//var count = 0;
 		var randomizer_query = 'SELECT * FROM restaurant WHERE restaurant_cuisine IN (' + all_cuisines + ') AND restaurant_type IN (' + all_types + ') AND restaurant_price <= ' + price + ' AND is_deleted = 0';
+		var related_query = 'SELECT * FROM restaurant WHERE restaurant_cuisine IN (' + all_cuisines + ') OR restaurant_type IN (' + all_types + ') OR restaurant_price <= ' + price + 'AND is_deleted = 0';
 		//console.log(randomizer_query);
 		db.query(randomizer_query, (err, results)=>{
 			try{
@@ -195,9 +196,32 @@ exports.randomizerAdvanced = (req, res)=>{
 				//console.log(restaurants);
 				var restaurant = restaurants[Math.floor(Math.random()*restaurants.length)];
 				restaurant = (restaurant === undefined) ? empty_obj : restaurant;
+				for(var i = 0; i<restaurants.length;i++){
+					if(restaurants[i]===restaurant){
+						restaurants.splice(i,1);
+					}
+				}
+				var related1 = restaurants[Math.floor(Math.random()*restaurants.length)];
+				related1 = (related1 === undefined) ? empty_obj : related1;
+				for(var i = 0; i<restaurants.length;i++){
+					if(restaurants[i]===related1){
+						restaurants.splice(i,1);
+					}
+				}
+
+				var related2 = restaurants[Math.floor(Math.random()*restaurants.length)];
+				related2 = (related2 === undefined) ? empty_obj : related2;
+				for(var i = 0; i<restaurants.length;i++){
+					if(restaurants[i]===related2){
+						restaurants.splice(i,1);
+					}
+				}
+
 				console.log(restaurant.restaurant_id);
 				return res.json({
-					restaurant: restaurant
+					restaurant: restaurant,
+					related1: related1,
+					related2: related2
 					//count: restaurants.length
 				});
 						

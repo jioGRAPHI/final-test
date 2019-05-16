@@ -5,12 +5,12 @@ import logo from '../images/title with logo.png';
 import hammenu from '../images/hamburger-menu.png';
 import '../css/Navbar.css';
 
-class Navbar extends Component {
+class NavBar extends Component {
 
   constructor(props){
     super(props)
     this.state = {
-      user_id: 0,
+      user_id: this.props.user_id,
       username: '',
       firstname: '',
       lastname: '',
@@ -22,26 +22,26 @@ class Navbar extends Component {
     this.handleLogOut = this.handleLogOut.bind(this)
   }
 
-  // componentWillMount(){
-  //   fetch("/check-session")
-  //   .then(function(response){
-  //     return response.json()})
-  //   .then((body) => {
-  //     if(body.statusCode === 200){
-  //       this.setState({
-  //         user_id: body.userData.user_id, 
-  //         username: body.userData.username,
-  //         user_type: body.userData.user_type,
-  //         isLoggedIn: true
-  //       })
-  //       console.log(body.userData)
-  //     }else{
-  //       this.setState({
-  //         redirect: 'unauthorized' 
-  //       })
-  //     }
-  //   }) 
-  // }
+  componentWillMount(){
+    fetch("/check-session")
+    .then(function(response){
+      return response.json()})
+    .then((body) => {
+      if(body.statusCode === 200){
+        this.setState({
+          user_id: body.userData.user_id, 
+          username: body.userData.username,
+          user_type: body.userData.user_type,
+          isLoggedIn: true
+        })
+        console.log(body.userData)
+      }else{
+        this.setState({
+          redirect: 'unauthorized' 
+        })
+      }
+    }) 
+  }
 
   // renderRedirect = () => {
   //   if (this.state.redirect === 'unauthorized'){
@@ -107,4 +107,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default NavBar;

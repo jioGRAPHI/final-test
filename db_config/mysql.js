@@ -9,7 +9,7 @@ if (process.env.JAWSDB_MARIA_URL){
   connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: '',
+	password: 'useruser',
 	database: 'find_dining',
 	multipleStatements: true
   });

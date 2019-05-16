@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import "circular-std";
+import ReactImageFallback from "react-image-fallback";
+import StarRatings from 'react-star-ratings';
 
-import sample from '../images/sample.jpg';
+
+
 // import related from '../images/related.jpg';
 // import related2 from '../images/related2.jpg';
 // import related3 from '../images/related3.jpg';
@@ -20,39 +23,57 @@ import sample from '../images/sample.jpg';
 
 import NavBar from './Navbar';
 import Footer from './Footer';
-import '../css/Randomizer.css'
+import '../css/Randomizer.css';
+import notfound from '../images/notfound.png';
+import '../css/Home.css';
 
 class Randomizer extends Component {
 
 	constructor(){
 		super();
 		this.state = {
+			cuisine_list: [],
+		    type_list: [],
 
 			restaurant: [],
-	  		//checked_cuisines: new Map(), //Array from checkbox list
-	  		//checked_types: new Map(), //
-	  		cuisines : [],
-	  		types : [],
-	  		related: [],
+			related1: [],
+			related2: [],
+
+	  		cuisines : ["American","Chinese","Filipino","Italian","Japanese","Korean","Others","Tex-Mex"],
+	  		types : ["Canteen","Eatery","Fastfood","Others","Restaurant"],
+	  		//related: [],
 
       		price: '*' || this.props.price,
-      		//cuisine: '*' || this.props.cuisine,
-      		//type: '*' || this.props.type,
+      		selectedPrice: 3,
 
-      		alltype: 0,
-      		allcuisine: 0,
+      		//alltype: 0,
+      		//allcuisine: 0,
       		redirect: ''
 		}
 
 		this.randomize = this.randomize.bind(this);
+		this.randomize_f = this.randomize_f.bind(this);
 
-		this.resetOptions = this.resetOptions.bind(this);
-		this.handleChangePrice = this.handleChangePrice.bind(this);
-    	this.handleChangeCuisines = this.handleChangeCuisines.bind(this);
-    	this.handleChangeTypes = this.handleChangeTypes.bind(this);
+		this.handlePriceChange = this.handlePriceChange.bind(this);
+		this.toggleCuisine = this.toggleCuisine.bind(this);
+		this.toggleType = this.toggleType.bind(this);
+
+    	//this.handleChangeCuisines = this.handleChangeCuisines.bind(this);
+    	//this.handleChangeTypes = this.handleChangeTypes.bind(this);
 
     	this.toggleAllCuisines = this.toggleAllCuisines.bind(this);
     	this.toggleAllTypes = this.toggleAllTypes.bind(this);
+
+    	fetch('/get-cuisines-and-types')
+	    .then((response) => {return response.json() })
+	    .then((body) => {
+          	this.setState({ 
+          		cuisine_list: body.cuisines,
+          		type_list: body.types,
+	        })
+	        console.log(this.cuisine_list);
+        	console.log(body)
+    	})
 	}
 
 	/* ===============================
@@ -118,9 +139,56 @@ class Randomizer extends Component {
     }
   }
 
-  	handleChangePrice(e){
-    	this.setState({price: e.target.value});
-  	}
+  	
+	handlePriceChange(e){
+  		this.setState({
+    		selectedPrice: e.target.value,
+    		price: e.target.value
+  		});
+		console.log("Price set to : " + this.state.selectedPrice);
+	}
+
+	toggleCuisine(e){
+		const options = this.state.cuisines
+   	 	let index
+
+    	// check if the check box is checked or unchecked
+    	if (e.target.checked) {
+      	// add the numerical value of the checkbox to options array
+      		console.log("Added cuisine " + e.target.value);
+      		options.push(e.target.value)
+    	} else {
+      	// or remove the value from the unchecked checkbox from the array
+      		index = options.indexOf(e.target.value)
+      		console.log("Removed cuisine " + e.target.value);
+      		options.splice(index, 1)
+    	}
+    // update the state with the new array of options
+    	this.setState({ cuisines: options })
+    	console.log(this.state.cuisines);
+	}
+
+	toggleType(e){
+		const options = this.state.types
+   	 	let index
+
+    	// check if the check box is checked or unchecked
+    	if (e.target.checked) {
+      	// add the numerical value of the checkbox to options array
+      		console.log("added type " + e.target.value);
+      		options.push(e.target.value)
+    	} else {
+      	// or remove the value from the unchecked checkbox from the array
+      		index = options.indexOf(e.target.value)
+      		console.log("Removed type " + e.target.value);
+      		options.splice(index, 1)
+    	}
+    // update the state with the new array of options
+    	this.setState({ types: options })
+    	   console.log(this.state.types);
+	}
+
+
 
   	handleChangeCuisines(e){
     	this.state.cuisines.push(e.target.value);
@@ -146,24 +214,7 @@ class Randomizer extends Component {
   		this.setState({alltype: !this.state.alltype});
   	}
 
-  	/*
-  	disableTypes(e){
-  		this.setState(prevState => ({
-  			disabledTypes: !prevState.disabledTypes
-		}));  
-		if(this.state.disabledTypes==true){
-			this.setState({cuisines : "*"})
-		}
-  	}
-  	disableCuisines(e){
-		this.setState(prevState => ({
-  			disabledCuisines: !prevState.disabledCuisines
-		}));  	
-		if(this.state.disabledTypes==true){
-    		this.setState({types : "*"})
-    	}
-	}
-	*/
+ 
 
  
 	/*showModal(e){
@@ -182,8 +233,7 @@ class Randomizer extends Component {
 
 	randomize(e){
 		//Utilize Simple randomize
-		document.getElementById('rand_details').style.display='block';
-		document.getElementById('rand_default').style.display='none';
+
 
 		fetch('http://localhost:3001/randomizer-simple')
       		.then((response) => {return response.json()})
@@ -192,6 +242,36 @@ class Randomizer extends Component {
         	this.setState({count:data.count})
         	//console.log(restaurant);
       	}))//-=============================
+	}
+
+	randomize_f(e){
+		document.getElementById("rand-results-id").style.display="flex";
+		document.getElementById("randRelated-id").style.display="flex";
+
+		// Adv Randomize ==================
+		fetch('http://localhost:3001/randomizer',{
+		method: 'POST',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			"cuisine": this.state.cuisines,
+			"type": this.state.types,
+			"price": this.state.price
+			})
+		})
+      		.then((response) => {return response.json()})
+      		.then((data=>{
+        this.setState({
+        	restaurant:data.restaurant,
+        	related1:data.related1,
+        	related2:data.related2
+        })
+        this.setState({count:data.count})
+        //console.log(restaurant);
+     	 }))
+      	// Adv randomize
 
 	}
 
@@ -253,86 +333,118 @@ class Randomizer extends Component {
 		}
 
 		return(
-  		<div>
-  		  {this.renderRedirect()}
-  			<NavBar />
+  				<div>
+		  		<div>
+		        <NavBar />
+		      </div>
+		      	
 
-  			<div className="rand_bg">
+        <div className="rand_body">
 
-  				<div className="filter">
-  						<p className="alert">Filter not yet working. =( </p>
-  						<h5><em> Filter by Popularity </em></h5>
-    						<form action="" onChange={this.toggleAllTypes} value={this.state.value}>
-    							<input type="checkbox" name="alltype" value="alltype"  /> All </form>
-    						<form action="" onChange={this.handleChangeTypes} value={this.state.value}>
-    							<li><input type="checkbox" name="type" value="Buffet" /> New </li> 
-    							<li><input type="checkbox" name="type" value="Stall"  /> Most Liked </li>
-    							<li><input type="checkbox" name="type" value="Canteen" /> Top Rated </li>
-    						</form>
+        <div className="filter">
 
-  						<h5><em> Filter by Price </em></h5>
-  						<form action="" onChange={this.toggleAllTypes} value={this.state.value}>
-    							<input type="checkbox" name="alltype" value="alltype"  /> All </form>
-  						<form action="" onChange={this.handleChangePrice}>
-    							<li><input type="checkbox" name="price" value="1" /> ₱ </li>
-    							<li><input type="checkbox" name="price" value="2" /> ₱₱ </li> 
-    							<li><input type="checkbox" name="price" value="3" /> ₱₱₱ </li>
-    						</form>
+			<h5><em> Filter by Budget </em></h5>
 
-    						<h5><em> Filter by Cuisine </em></h5>
-    						<form action="" onChange={this.toggleAllCuisines} value={this.state.value}>
-    							<input type="checkbox" name="allcuisine" value="allcuisine"  /> All </form>
-    						<form action="" onChange={this.handleChangeCuisines} value={this.state.value}>
-    							<li><input type="checkbox" name="cuisine" value="Alien"  /> Alien </li> 
-    							<li><input type="checkbox" name="cuisine" value="Mediterranean" /> Mediterranean </li>
-    							<li><input type="checkbox" name="cuisine" value="Chinese" /> Chinese </li>
-    							<li><input type="checkbox" name="cuisine" value="Japanese"  /> Japanese </li> 
-    							<li><input type="checkbox" name="cuisine" value="Filipino" /> Filipino </li>
-    						</form> 	
+			<ul className = "price-list" style={{ listStyleType: "none" }}>
+				<li><input type="radio" name="price" value="1" onChange={this.handlePriceChange} checked={this.state.selectedPrice === '1'} /> ₱ </li>
+				<li><input type="radio" name="price" value="2" onChange={this.handlePriceChange} checked={this.state.selectedPrice === '2'} /> ₱₱ </li> 
+				<li><input type="radio" name="price" value="3" onChange={this.handlePriceChange} checked={this.state.selectedPrice === '3'} /> ₱₱₱ </li>
+			</ul>
 
-    						<h5><em> Filter by Type </em></h5>
-    						<form action="" onChange={this.toggleAllTypes} value={this.state.value}>
-    							<input type="checkbox" name="alltype" value="alltype"  /> All </form>
-    						<form action="" onChange={this.handleChangeTypes} value={this.state.value}>
-    							<li><input type="checkbox" name="type" value="Buffet" /> Buffet </li> 
-    							<li><input type="checkbox" name="type" value="Stall"  /> Stall </li>
-    							<li><input type="checkbox" name="type" value="Canteen" /> Canteen </li>
-    							<li><input type="checkbox" name="type" value="Restaurant" /> Restaurant </li> 
-    							<li><input type="checkbox" name="type" value="Eatery"  /> Eatery </li>
-    						</form>
+		<h5><em> Filter by Cuisine </em></h5>
 
-    				</div>
+			<ul className = "cuisine-list"> 
+	    	{this.state.cuisine_list.map((shop, index) => {
+	        	return <li key={index}>
+	        		<input type="checkbox" value={shop.restaurant_cuisine} onClick={this.toggleCuisine } defaultChecked />
+	        			{shop.restaurant_cuisine}
+	 			</li>
+	      	})} 
+			</ul>
 
-    				<div className="body">
-    					<img className="restaurant_image" src={sample} alt="sample"/>
-    					<button className="rand_button" type="submit"  onClick={this.randomize}> RANDOMIZE </button>
-    				</div>
+		<h5><em> Filter by Type </em></h5>
+		
+			<ul className = "type-list"> 
+	    	{this.state.type_list.map((shop, index) => {
+	        	return <li key={index}>
+	        		<input type="checkbox" value={shop.restaurant_type} onClick={this.toggleType} defaultChecked />
+	        			{shop.restaurant_type}
+	 			</li>
+	      	})} 
+			</ul>
 
-    				<div className="info">
-    					<Link style={{ textDecoration: 'none', color: 'black' }}to={{pathname: `/restaurant/${this.state.restaurant.restaurant_id}`, 
-                            state: { 
-                              user_id: this.state.user_id, 
-                              username: this.state.username,
-                              user_type: this.state.user_type,
-                              token: this.state.token,
-                              restaurant_id: this.state.restaurant.restaurant_id
-                            } }}>
-    					<div id="rand_details">
-  						<h5> <em>{this.state.restaurant.restaurant_name}</em> </h5>
-  						<p> Cuisine: {this.state.restaurant.restaurant_cuisine} </p>
-  						<p> Type: {this.state.restaurant.restaurant_type} </p>							
-  						<p> Price: {pricePh} </p>
-  					</div>	
-  					</Link>
 
-  					<div id="rand_default">
-  						<h3>R A N D O M I Z E</h3>
-  					</div>				
-  				</div>
-  			</div>
 
+    	</div>
+
+        <div className="mainRand">
+          		<button className="rand_button" type="submit"  onClick={this.randomize_f}>RANDOMIZE</button>
+
+
+
+		        <div className="rand-results" id="rand-results-id">
+		          <div className="result-row">
+		                <div className="result-row1">
+		                  <div className="result-photo">"PHOTO"</div> 
+		                  <div className="result-type">{this.state.restaurant.restaurant_type}</div>
+		              <div className="result-rates">                    
+		                    <div className="result-rating">{this.state.restaurant.rating}</div>
+		                    <div className="result-likes">{this.state.restaurant.restaurant_likes} thumbs</div>
+		                  </div>
+		                      <div className="result-name">
+		                       {this.state.restaurant.restaurant_name}   
+		                      </div>
+		                      <div className="result-address">result-address{this.state.restaurant.restaurant_adress}}</div>
+		                    </div>
+
+		                    <div className= "result-row2">
+		                  <div className="result-cuisine">{this.state.restaurant.restaurant_cuisine}</div>
+		                  <div className="result-cuisine">{this.state.restaurant.restaurant_price}</div> 
+		                  <div className="result-data">{this.state.restaurant.restaurant_openingtime} - {this.state.restaurant.restaurant_closingtime}</div>
+		                  <div className="result-data">{this.state.restaurant.restaurant_days}</div>
+		                </div>
+		              </div>
+		          </div>
+		        <div className="randRelated" id="randRelated-id">
+		        	<p className="homep">RELATED</p>
+		        	<div className="randRelatedItems">
+
+		        		<div className="home-container">
+	                      <ReactImageFallback className="homefeedimages" src='../images/test.jpg' fallbackImage={notfound} alt="Report to administrator for missing images" />
+	                      	<div className="feed-title">
+                              <h4 className="restaurant-title">{this.state.related1.restaurant_name}</h4>
+                            </div>
+	                        <div className="home-overlay"><div className="home-restodetails"><h3 className="restaurant-title">{this.state.related1.restaurant_name}</h3>
+	                        <p>{this.state.related1.restaurant_cuisine}</p><p className="return-strings">
+	                        </p><p className="return-strings"> ❤ {this.state.restaurant.restaurant_likes}</p></div></div>     
+
+	                    </div>
+
+	                    <div className="home-container">
+	                      <ReactImageFallback className="homefeedimages" src='../images/test.jpg' fallbackImage={notfound} alt="Report to administrator for missing images" />
+	                      	<div className="feed-title">
+                              <h4 className="restaurant-title">{this.state.related2.restaurant_name}</h4>
+                            </div>
+	                        <div className="home-overlay"><div className="home-restodetails"><h3 className="restaurant-title">{this.state.related2.restaurant_name}</h3>
+	                        <p>{this.state.related2.restaurant_cuisine}</p><p className="return-strings">
+	                        </p><p className="return-strings"> ❤ {this.state.restaurant.restaurant_likes}</p></div></div>     
+
+	                    </div>
+
+
+		        	</div>
+				</div>
+		        </div>
+
+		    
+
+
+		  </div>
+      <div>
         <Footer />
   		</div>
+
+      </div>
 		)
 	}
 }

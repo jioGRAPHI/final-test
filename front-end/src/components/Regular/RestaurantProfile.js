@@ -75,6 +75,7 @@ class RestaurantProfile extends Component {
     this.unlike = this.unlike.bind(this)
     this.checkingIfRated = this.checkingIfRated.bind(this)
     this.rate = this.rate.bind(this)
+    this.deleteRate = this.deleteRate.bind(this)
     this.showPrice = this.showPrice.bind(this)
     this.showRating = this.showRating.bind(this)
     this.handleStyleLoad = this.handleStyleLoad.bind(this)
@@ -322,6 +323,38 @@ class RestaurantProfile extends Component {
     })
   }
 
+  deleteRate(e){
+    fetch('/delete-rate', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "restaurant_id": this.state.restaurant_id,
+        "user_id": this.state.user_id
+      })
+    })
+    .then((response)=>{
+      return response.json()
+    }).then((body)=>{
+      console.log(body)
+      if(body.currRates[0].restaurant_rating === null){
+        this.setState({
+          restaurant_rating: 0
+        })
+      }
+      else{
+        this.setState({
+          restaurant_rating: body.currRates[0].restaurant_rating
+        })
+      }
+    });
+    this.setState({
+      isRated: false
+    })
+  }
+
   handleStyleLoad = map => (map.resize())
 
   getComments(){
@@ -483,6 +516,9 @@ class RestaurantProfile extends Component {
                           <input type="radio" name="rating" id="5"/><label className="radio-label">5</label>
                           <button className="profile-radiobutton" id="rateButton" onClick={ this.rate }>Rate!</button>
                         </div>
+                        }
+                        {
+                          this.state.isRated === true && <button className="profile-radiobutton" id="rateButton" onClick={this.deleteRate}>Delete Rating</button>
                         }
                     </div>
                   </div>

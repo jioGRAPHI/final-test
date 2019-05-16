@@ -172,3 +172,47 @@ background-image: linear-gradient(to right, #FCAE39, #F26625);
   color: white; 
   border: 2px solid #f79361;
 }
+
+
+.edit-body{
+  /*background-color: #282c34;*/
+  /*background-color: #767c84;*/
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.edit-forms-div {
+  flex: 1;
+  /*background-color: #767c84;*/
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 400px;
+  /*height: ;*/
+}
+
+.editinput:focus:invalid { 
+  border-color: #FF1100;
+}
+.editinput{
+  flex: 1;
+  display: inline-block;
+  width: 260px;
+  height: 50px;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 18px;
+  color: black;
+  margin-top: 10px;
+  text-align: center;
+}
+.editHead{
+  font-family: 'CircularStd';
+  text-align: left;
+  padding-left: 68px;
+}

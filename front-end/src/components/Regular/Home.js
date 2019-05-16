@@ -69,29 +69,6 @@ class Home extends Component {
     }
   }
 
-  // componentWillMount(){
-  //   fetch("/check-session")
-  //   .then(function(response){
-  //     return response.json()})
-  //   .then((body) => {
-  //     if(body.statusCode === 200){
-  //       this.setState({
-  //         user_id: body.userData.user_id, 
-  //         username: body.userData.username,
-  //         firstname: body.userData.firstname,
-  //         lastname: body.userData.lastname,
-  //         user_type: body.userData.user_type,
-  //         isLoggedIn: true
-  //       })
-  //       console.log(body.userData)
-  //     }else{
-  //       this.setState({
-  //         redirect: 'unauthorized' 
-  //       })
-  //     }
-  //   }) 
-  // }
-
   render() {
     return (
       <div className="page">
@@ -139,10 +116,8 @@ class Home extends Component {
               {this.state.top_rated.slice(0, 4).map((resto) => {
                 return <div className="home-container">
                           <ReactImageFallback className="homefeedimages" src={'../images/test.jpg'} fallbackImage={notfound} alt="Report to administrator for missing images" />
-                          <div>
-                            <div className="feed-title">
-                              <h4 className="feed-title-h4">{resto.restaurant_name}</h4>
-                            </div>
+                          <div className="feed-overlay">
+                            <div className="feed-title"><h4 className="feed-title-h4">{resto.restaurant_name}</h4></div>
                           </div>
                           <Link to={{pathname: `/restaurant/${resto.restaurant_id}`, 
                           state: { 
@@ -169,7 +144,7 @@ class Home extends Component {
               {this.state.most_liked.slice(0, 4).map((resto) => {
                 return <div className="home-container">
                           <ReactImageFallback className="homefeedimages" src='../images/test.jpg' fallbackImage={notfound} alt="Report to administrator for missing images" />
-                          <div>
+                          <div className="feed-overlay">
                             <div className="feed-title">
                               <h4 className="feed-title-h4">{resto.restaurant_name}</h4>
                             </div>

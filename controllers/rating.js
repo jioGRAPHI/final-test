@@ -29,6 +29,34 @@ exports.rate = (req, res)=>{
 	});
 }
 
+exports.deleteRate = (req, res)=>{
+	const { restaurant_id, user_id } = req.body;
+	const DELETE_RATE_QUERY = 'delete from rating where restaurant_id = ? && user_id = ?;'
+	const errors = []
+	db.query(DELETE_RATE_QUERY, [restaurant_id, user_id], (err, results) => {
+		if(!err){
+			const GET_RATES_QUERY = 'select * from restaurant where restaurant_id = ?'
+			db.query(GET_RATES_QUERY, [restaurant_id], (err, results) => {
+				if(!err){
+					console.log("Delete Rate Successful.");
+					return res.json({
+						message: 'Delete Rate Successful.',
+						errors: errors,
+						currRates: results
+					});
+				}
+			})
+		}
+		else{
+			console.log("Error!");
+			return res.json({
+				message: 'Delete Rate Failed',
+				errors: errors
+			});
+		}
+	});
+}
+
 exports.checkIfRated = (req, res)=>{
 	const restaurant_id = req.params.restaurant_id;
 	const user_id = req.params.user_id;

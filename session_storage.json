@@ -1,0 +1,14 @@
+{
+  "loggedIn": "true",
+  "userData": {
+    "user_id": 1,
+    "username": "user1",
+    "password": "$2b$10$MFKw.7hr57k5JdGTnfMf6uKEW/ItukZYN7EWIlRmJ89gYIEAvYt22",
+    "email": "reguser1@blah.com",
+    "firstname": "user1",
+    "lastname": "user1",
+    "contactno": "123456789",
+    "user_type": 0,
+    "is_deleted": 0
+  }
+}

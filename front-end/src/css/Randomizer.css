@@ -1,4 +1,4 @@
-.rand_bg {
+/*.rand_bg {
 	padding-left: 15%;
 	padding-right: 10%;
 	display: flex;
@@ -77,4 +77,159 @@
 .alert{
 	color: red;
 	font-size: 15px;
+}*/
+
+
+.rand_button{
+  flex: 1;
+	margin-top: 2%;
+	margin-left: 23%;
+	background-color: #f79361;
+	min-width: 60%;
+  max-width: 60%;
+	min-height: 10%;
+  max-height: 10%;
+	border: 2px solid #f79361;
+	border-radius: 75px;
+	font-family: CircularStd;
+
 }
+
+
+.rand-results {
+  flex: 4;
+  margin: 3%;
+  width: 95%;
+  height:40%;
+}
+
+#rand-results-id{
+  display: none;
+
+}
+
+
+
+.result-row{
+  width: 96%;
+  min-width: 800px;
+  margin: 1%;
+  height: 250px;
+  position: relative;
+  border: #f79361 solid 0px;
+  background-color: #f4f4f4;
+  border-radius: 4px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.result-row1{
+  height: 50%;
+  margin: 1%;
+  padding-top: 1%;
+  text-align: left; 
+}
+.result-row2{
+  margin-top: 2%;
+  height: 50%;
+  text-align: left;
+  margin-left: 1%;
+  flex-wrap: wrap;
+}
+
+.result-row:hover {background-color:#f0f0f0;}
+
+.result-photo{
+  float: left;
+  width: 25%;
+  height: 80%;
+  padding: 10px;
+  border: 2px solid black;
+  position: relative;
+}
+
+.result-type{
+  float: left;
+  width: 60%;
+  margin-left: 1%;
+}
+
+.result-rates{
+  margin: 1px;
+  width: 10%;
+  float: right;
+  text-align: right;
+  font-size: 0.7em;
+  flex-wrap: wrap;
+}
+
+.result-rating{
+  float: right;
+  padding: 15px 10px;
+  margin: 0 15%;
+  background-color: #6ab187;
+  border-radius: 100%;
+  min-width: 20px;
+  min-height: 10px;
+  text-align: center;
+}
+
+.result-likes{
+  height: 15px;
+  float: right;
+  position: relative;
+  margin-top: 10%;
+}
+
+.result-name{
+  float: left;
+  width: 60%;
+  margin-left: 1%;
+  font-size: 2em;
+  color: red;
+}
+
+.result-address{
+  float:left;
+  width: 70%;
+  margin-left: 1%;
+  margin-top: 1%;
+  font-style: italic;
+}
+
+
+.rand_body{
+  height: 100vh;
+  display: flex;
+}
+
+.mainRand{
+  margin-left: 5%;
+  margin-top: 3%;
+  height: 80vh;
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.filter{
+  margin-left: 10%;
+  margin-top: 3%;
+}
+
+.randRelated{
+  flex: 4;
+  flex-direction: column;
+}
+
+#randRelated-id{
+  display: none;
+}
+.randRelatedItems{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+

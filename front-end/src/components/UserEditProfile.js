@@ -97,8 +97,9 @@ class UserEdit extends Component{
 		        edit_status: 'Edit successful!',
 		        edited: true
  			})
- 			this.props.handlePostsEdit()
+ 			// this.props.handlePostsEdit()
  		})
+ 		
  	}
 
 	handleUsername(e){
@@ -159,42 +160,26 @@ render() {
     	// isLoggedIn
     } = this.state
     return (
-		<div>
-
+		<div className="edit-body">
+		<div className ="edit-forms-div">
+		<form>
 			<div>
-			  <h4>ID: {user_id}</h4>
-			  <h4>Username: {username} </h4>
+			  <h5 className="editHead">User ID: {user_id}</h5>
+			  <h5 className="editHead">Username: {username} </h5>
 			</div>
-
-			<div>
-				<label for="username">Username</label><br />
-				<input type="text"value={username} placeholder={this.username} name="username" onChange={this.handleUsername} noValidate /><br />
-
-				<label for="passwordOld">Old Password</label><br />
-				<input type="password" value={passwordOld} placeholder={"Old Password"} name="passwordOld" onChange={this.handlePasswordOld} noValidate /><br />
-
-				<label for="passwordNew">New Password</label><br />
-				<input type="password" placeholder={"New Password"} name="passwordNew" onChange={this.handlePasswordNew} /><br />
-
-				<label for="passwordNew2">Repeat Password</label><br />
-				<input type="password" placeholder={"Repeat Password"} name="passwordNew2" onChange={this.handlePasswordNew2} /><br />
-
-				<label for="email">Email</label><br />
-				<input type="email" value={email} placeholder={this.email} name="email" onChange={this.handleEmail} noValidate /><br />
-
-				<label for="firstname">First Name</label><br />
-				<input type="text" value={firstname} name="firstname" placeholder={this.firstname} onChange={this.handleFirstname} noValidate /><br />
-
-				<label for="lastname">Last Name</label><br />
-				<input type="text" value={lastname} name="lastname" placeholder={this.lastname} onChange={this.handleLastname} noValidate /><br />
-
-				  <label for="contactno">Contact No</label><br />
-				<input type="text" value={contactno} name="contactno" placeholder={this.contactno} onChange={this.handleContactno} noValidate /><br />     
-
-				<div className="toEditButton">
-			    	<button onClick={this.editInfo}>Submit</button>
-			    </div>
-			</div>
+	          <input className="editinput" type="text"value={username} placeholder={this.username} name="username" onChange={this.handleUsername} noValidate /><br />
+	          <input className="editinput" type="password" value={passwordOld} placeholder={"Old Password"} name="passwordOld" onChange={this.handlePasswordOld} noValidate /><br />
+	          <input className="editinput" type="password" placeholder={"New Password"} name="passwordNew" onChange={this.handlePasswordNew} /><br />
+	          <input className="editinput" type="password" placeholder={"Repeat Password"} name="passwordNew2" onChange={this.handlePasswordNew2} /><br />
+	          <input className="editinput" type="email" value={email} placeholder={this.email} name="email" onChange={this.handleEmail} noValidate /><br />
+	          <input className="editinput" type="text" value={firstname} name="firstname" placeholder={this.firstname} onChange={this.handleFirstname} noValidate /><br />
+	          <input className="editinput" type="text" value={lastname} name="lastname" placeholder={this.lastname} onChange={this.handleLastname} noValidate /><br />
+	          <input className="editinput" type="text" value={contactno} name="contactno" placeholder={this.contactno} onChange={this.handleContactno} noValidate /><br />  
+		</form>
+		<div className="toEditButton">
+	    	<button className= "login-submitbutton" onClick={this.editInfo}>Submit</button>
+	    </div><br/>
+		</div>
 		</div>
     );
   }

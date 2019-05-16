@@ -270,7 +270,9 @@ class RestaurantAdmin extends Component {
                 
                 <div className="profile-restaurantoverview">
                   <div className="profile-restaurantoverview-content">
-                    <h3 className="profile-restaurantoverview-title">{ restaurant_name }</h3>
+                    <div className="title-container">
+                      <h3 className="profile-restaurantoverview-title">{ restaurant_name }</h3>
+                    </div>
                     <p>{ restaurant_cuisine }</p>
                     <p className="return-strings"><b>{this.showPrice(restaurant_price)}</b></p>
                     &nbsp;
