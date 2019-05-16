@@ -70,8 +70,8 @@ class ResolvedReports extends Component {
           <button className="reportButton" type="submit" value='Others' onClick={this.handleFilterKeyChange}>Others</button>
         </div>
         */}
-       
-        <table className="reportTable">
+       <div className="tableDiv">
+        <table className="summaryTable">
           <th>ID</th>
           <th>Category</th>
           <th>Details</th>
@@ -101,6 +101,7 @@ class ResolvedReports extends Component {
             })} 
             
         </table>
+        </div>
       </div>
     );
   }

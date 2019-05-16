@@ -213,7 +213,7 @@
   border: solid;
   border-color: #f79361;
   background-color: white;
-  font-size: 1.75vh;
+  font-size: 16px;
   flex: 1;
   margin: 2vmin;
   border-radius: 10px;
@@ -254,6 +254,23 @@
   flex: 1;
   width: 150px;
   min-height: 20px;
+  text-align: center;
+}
+
+.report-title{
+  font-size: 18px;
+  border-bottom: solid 2px;
+  width: 100%;
+}
+
+.report-subtitles{
+  font-size: 16px;
+  color: #f79361;
+}
+
+.edit-title{
+  font-size: 20px;
+  color: #f79361;
   text-align: center;
 }
 
@@ -301,7 +318,7 @@
   border: solid;
   border-color: #D13B1A;
   background-color: #D13B1A;
-  font-size: 1.75vh;
+  font-size: 16px;
   border-radius: 10px;
   text-align: center;
   font-weight: bold;
@@ -326,7 +343,7 @@
   border: solid;
   border-color: #5dcc49;
   background-color: #5dcc49;
-  font-size: 1.75vh;
+  font-size: 16px;
   border-radius: 10px;
   text-align: center;
   font-weight: bold;
@@ -351,7 +368,7 @@
   border: solid;
   border-color: #f79361;
   background-color: #f79361;
-  font-size: 1.75vh;
+  font-size: 16px;
   border-radius: 10px;
   align-content: center;
   font-weight: bold;
@@ -368,7 +385,7 @@
   border: solid;
   border-color: #D13B1A;
   background-color: white;
-  font-size: 1.75vh;
+  font-size: 16px;
   flex: 1;
   margin: 2vmin;
   border-radius: 10px;
@@ -420,13 +437,14 @@
   max-width: 30px;
   max-height: 30px;
   margin-right: 5px;
-  color: #D13B1A;
+  color: #b5b5b5;
   text-decoration: none;
   border: none;
-  font-size: 2.5vh;
+  font-size: 18px;
   font-weight: bold;
   background-color: white;
   font-family: CircularStd;
+  margin-left: 75%;
 }
 
 .profile-modal {
@@ -436,7 +454,8 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width:320px;
+  width: 320px;
+  height: 60vh;
 }
 
 .profile-modal-content {
@@ -488,7 +507,7 @@
 }
 
 .label {
-  font-size: 12px;
+  font-size: 15px;
   margin: 10px;
   font-family: CircularStd;
 }

@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import mapboxgl from 'mapbox-gl'
 import ReactImageFallback from "react-image-fallback";
 import StarRatings from 'react-star-ratings';
+import Carousel from 'react-bootstrap/Carousel'
 
 import EditShopOnProfile from "./EditShopOnProfile.js"
 import "../../css/Profile.css";
 
+import temp_dp from '../../images/admin-photo.png'
 import notfound from '../../images/notfound.png'
 
 // import restaurant from "../../images/recent2.jpg";
@@ -40,16 +42,12 @@ class RestaurantAdmin extends Component {
       restaurant_openingtime: "",
       restaurant_closingtime: "",
       restaurant_address: "",
-      latitude: "",
-      longitude: "",
       is_deleted: false,
       isVisible: true,
       isEditable: false,
       isDeletable: false,
       shopDeleteSuccessVisibility: false,
       reportVisibility: false,
-      // isLiked: false,
-      // isRated: false,
       isLikedArray: [],
       isRatedArray: [],
       editShopPageVisibility: false,
@@ -57,27 +55,27 @@ class RestaurantAdmin extends Component {
       status: '',
       editDone: false,
       deleteDone: false,
-      lng: 121.243436,
-      lat: 14.167565,
+      lng: 0,
+      lat: 0,
       zoom: 16,
       popupInfo: null,
       comments: [],
       search_keyword: '',
       search_results: [],
-      resto_photos: []
+      resto_photos: [],
+      index: 0,
+      direction: null,
     }
 
     this.setReportVisiblityToTrue = this.setReportVisiblityToTrue.bind(this)
     this.setReportVisibilityToFalse = this.setReportVisibilityToFalse.bind(this)
-    // this.like = this.like.bind(this)
-    // this.unlike = this.unlike.bind(this)
-    // this.rate = this.rate.bind(this)
     this.showPrice = this.showPrice.bind(this)
     this.showRating = this.showRating.bind(this)
     this.handlePostEdit = this.handlePostEdit.bind(this)
     this.handleStyleLoad = this.handleStyleLoad.bind(this)
     this.showModal = this.showModal.bind(this)
     this.exitModal = this.exitModal.bind(this)
+    this.handleSelect = this.handleSelect.bind(this);
 
     fetch('http://localhost:3001/get-all-comments')
       .then((response) => {return response.json() })
@@ -102,8 +100,8 @@ class RestaurantAdmin extends Component {
               restaurant_openingtime: body.restaurantInfo[0].restaurant_openingtime,
               restaurant_closingtime: body.restaurantInfo[0].restaurant_closingtime,
               restaurant_address: body.restaurantInfo[0].restaurant_address,
-              latitude: body.restaurantInfo[0].latitude,
-              longitude: body.restaurantInfo[0].longitude,
+              lat: body.restaurantInfo[0].latitude,
+              lng: body.restaurantInfo[0].longitude,
               is_deleted: body.restaurantInfo[0].is_deleted,
               resto_photos: body.photos                
         })
@@ -114,32 +112,13 @@ class RestaurantAdmin extends Component {
         this.getComments();
     })
 
-    // fetch('http://localhost:3001/check-if-liked/' + this.state.restaurant_id + '/' + this.state.user_id)
-    //   .then((response) => { return response.json() })
-    //   .then((body) => {
-    //     this.setState({
-    //       isLikedArray: body.isLikedInfo
-    //     })
-    //     if(this.state.isLikedArray.length >= 1){
-    //       this.setState({
-    //         isLiked: true
-    //       })
-    //     }
-    //   })
+  }
 
-    // fetch('http://localhost:3001/check-if-rated/' + this.state.restaurant_id + '/' + this.state.user_id)
-    //   .then((response) => { return response.json() })
-    //   .then((body) => {
-    //     this.setState({
-    //       isRatedArray: body.isRatedInfo
-    //     })
-    //     if(this.state.isRatedArray.length >= 1){
-    //       this.setState({
-    //         isRated: true
-    //       })
-    //     }
-    //   })
-
+  handleSelect(selectedIndex, e) {
+    this.setState({
+      index: selectedIndex,
+      direction: e.direction,
+    });
   }
 
    componentDidMount() {
@@ -166,7 +145,7 @@ class RestaurantAdmin extends Component {
     });
 
   var marker = new mapboxgl.Marker()
-    .setLngLat([121.243692, 14.167954])
+    .setLngLat([this.state.lng, this.state.lat])
     .setDraggable(false)
     // .setOffset(1)
     .addTo(map);
@@ -234,28 +213,6 @@ class RestaurantAdmin extends Component {
     })
   }
 
-  // componentWillMount(){
-  //   fetch("http://localhost:3001/check-session")
-  //   .then(function(response){
-  //     return response.json()})
-  //   .then((body) => {
-  //     if(body.statusCode === 200){
-  //       this.setState({
-  //         user_id: body.userData.user_id, 
-  //         username: body.userData.username,
-  //         firstname: body.userData.firstname,
-  //         lastname: body.userData.lastname,
-  //         user_type: body.userData.user_type,
-  //         isLoggedIn: true
-  //       })
-  //       console.log(body.userData)
-  //     }else{
-  //       this.setState({
-  //         shop: 'unauthorized' 
-  //       })
-  //     }
-  //   }) 
-  // }
 
   showPrice(price){
     var peso = "₱"
@@ -281,89 +238,6 @@ class RestaurantAdmin extends Component {
     });
   }
 
-  // like(e){
-  //   fetch('http://localhost:3001/add-like', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       "restaurant_id": this.state.restaurant_id,
-  //       "user_id": this.state.user_id
-  //     })
-  //   })
-  //   .then(function(response){
-  //     return response.json()
-  //   }).then(function(body){
-  //     console.log(body)
-  //   });
-  //   this.setState({
-  //     isLiked: true
-  //   })
-  // }
-
-  // unlike(e){
-  //   fetch('http://localhost:3001/add-unlike', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       "restaurant_id": this.state.restaurant_id,
-  //       "user_id": this.state.user_id
-  //     })
-  //   })
-  //   .then(function(response){
-  //     return response.json()
-  //   }).then(function(body){
-  //     console.log(body)
-  //   });
-  //   this.setState({
-  //     isLiked: false
-  //   })
-  // }
-
-  // rate(e){
-  //   var ratingInput
-  //   if(document.getElementById("1").checked){
-  //     ratingInput = 1
-  //   }
-  //   else if(document.getElementById("2").checked){
-  //     ratingInput = 2
-  //   }
-  //   else if(document.getElementById("3").checked){
-  //     ratingInput = 3
-  //   }
-  //   else if(document.getElementById("4").checked){
-  //     ratingInput = 4
-  //   }
-  //   else if(document.getElementById("5").checked){
-  //     ratingInput = 5
-  //   }
-  //   fetch('http://localhost:3001/rate', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       "ratingToPass": ratingInput,
-  //       "restaurant_id": this.state.restaurant_id,
-  //       "user_id": this.state.user_id
-  //     })
-  //   })
-  //   .then(function(response){
-  //     return response.json()
-  //   }).then(function(body){
-  //     console.log(body)
-  //   });
-  //   this.setState({
-  //     isRated: true
-  //   })
-  // }
-
   handleStyleLoad = map => (map.resize())
 
   render(){
@@ -373,13 +247,12 @@ class RestaurantAdmin extends Component {
       restaurant_cuisine, 
       restaurant_rating, 
       restaurant_likes, 
-      // restaurant_type, 
       restaurant_price,
       restaurant_openingtime, 
       restaurant_closingtime, 
       restaurant_address, 
-      // latitude, 
-      // longitude 
+      index, 
+      direction,
     } = this.state
     return (
       <div>
@@ -447,12 +320,25 @@ class RestaurantAdmin extends Component {
 
                     <h4> Photos </h4>
 
-                    {this.state.resto_photos.map((photo) => {
-                      return (
-                      <img src = {photo.photo_path} alt ="alt"/>
-
-                        )
-                    })}
+                    <Carousel 
+                        interval = {5000}
+                        controls = {true}
+                        indicators = {true}
+                        wrap = {true}
+                        fade = {false}
+                        activeIndex = {index}
+                        direction = {direction}
+                        onSelect = {this.handleSelect}
+                        className="img-area-carousel"
+                      >
+                      {this.state.resto_photos.map((photo) => {
+                        return (
+                         <Carousel.Item className="profile-img-carousel"> 
+                          <img src = {photo.photo_path} alt ="alt"/>
+                         </Carousel.Item>
+                          )
+                      })}
+                      </Carousel>
                   </div>
 
                   <div className="profile-restaurantreviews">
@@ -462,21 +348,27 @@ class RestaurantAdmin extends Component {
 
                       {this.state.search_results.map((comment) => {
                           return <div className="profile-existingreview">
+                                      <div className="review-items">
+                                    <div className="post-item-userdetails">
+                                      <img className="post-user-dp" src={temp_dp}/>
                                       <b><i>{comment.username}</i></b>
                                       &nbsp;
-                                        {/* if comment is done by user, user can edit or delete */}
-                                        <div className="profile-existingreview-content">
-                                            <i>{comment.content}</i><br/>
-                                            { (comment.photo_path)
-                                              /* localhost:3001/images/filename can be accessed in the browser but cannot be used in page */
-                                              /* possible solution:
-                                                * move uploaded images to front-end/public/images 
-                                                * it will be host in localhost:3000/images/filename and can be accessed by page
-                                              */
-                                              ? <img className="photo-comment" src={'http://localhost:3001'+comment.photo_path} alt={'img'}/>
-                                              : null 
-                                            }
-                                        </div>
+                                    </div>
+                                      {/* if comment is done by user, user can edit or delete */}
+                                      <div className="profile-existingreview-content">
+                                          <i>{comment.content}</i><br/>
+                                          &nbsp;
+                                          { (comment.photo_path)
+                                            /* localhost:3001/images/filename can be accessed in the browser but cannot be used in page */
+                                            /* possible solution:
+                                              * move uploaded images to front-end/public/images 
+                                              * it will be host in localhost:3000/images/filename and can be accessed by page
+                                            */
+                                            ? <img className="photo-comment" src={comment.photo_path} alt={'img'}/>
+                                            : null 
+                                          }
+                                      </div>
+                                    </div>
                                         &nbsp;
                                       <button className="profile-deletecomment" onClick={(e)=>{console.log();this.delComment(comment.comment_id)}}>DELETE</button> 
                                     </div>

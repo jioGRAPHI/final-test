@@ -67,8 +67,8 @@ class DeletedUsers extends Component {
         </div>
         
         <br />
-
-        <table className="userTable">
+        <div className="tableDiv">
+        <table className="summaryTable">
           <th>ID</th>
           <th>Username</th>
           <th>First Name</th>
@@ -99,6 +99,7 @@ class DeletedUsers extends Component {
             )
           })} 
         </table>
+        </div>
       </div>
     );
   }

@@ -30,7 +30,8 @@ class CommentsAdminPage extends Component {
   render() {
     return (
      <div className="commentBody">
-      <table className="commentTable">
+      <div className="tableDiv">
+      <table className="summaryTable">
 
         <th>Comment ID</th>
         <th>Restaurant ID</th>
@@ -63,6 +64,7 @@ class CommentsAdminPage extends Component {
 
 
       </table>
+     </div>
      </div>
     );
   }

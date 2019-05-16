@@ -86,13 +86,13 @@ class Home extends Component {
   // }
 
   showRestaurants(e){
-    document.getElementById('manageRestaurant').style.backgroundColor='#f79361';
+    document.getElementById('manageRestaurant').style.backgroundColor='#fff';
     document.getElementById('manageRestaurant').style.fontWeight='bold';
-    document.getElementById('manageReport').style.backgroundColor='#fff';
+    document.getElementById('manageReport').style.backgroundColor='#f79361';
     document.getElementById('manageReport').style.fontWeight='normal';
-    document.getElementById('manageUser').style.backgroundColor='#fff';
+    document.getElementById('manageUser').style.backgroundColor='#f79361';
     document.getElementById('manageUser').style.fontWeight='normal';
-    document.getElementById('manageComment').style.backgroundColor='#fff';
+    document.getElementById('manageComment').style.backgroundColor='#f79361';
     document.getElementById('manageComment').style.fontWeight='normal';
 
     var report = document.getElementById('report');
@@ -107,14 +107,14 @@ class Home extends Component {
   }
 
   showReports(e){
-    document.getElementById('manageRestaurant').style.backgroundColor='#fff';
+    document.getElementById('manageRestaurant').style.backgroundColor='#f79361';
     document.getElementById('manageRestaurant').style.fontWeight='normal';
-    document.getElementById('manageReport').style.backgroundColor='#f79361';
+    document.getElementById('manageReport').style.backgroundColor='#fff';
     document.getElementById('manageReport').style.fontWeight='bold';
-    document.getElementById('manageUser').style.backgroundColor='#fff';
+    document.getElementById('manageUser').style.backgroundColor='#f79361';
     document.getElementById('manageUser').style.fontWeight='normal';
-    document.getElementById('manageComment').style.backgroundColor='#fff';
-    document.getElementById('manageComment').style.fontWeight='normal';
+    document.getElementById('manageComment').style.backgroundColor='#f79361';
+    document.getElementById('manageComment').style.fontWeight='#normal';
 
     var report = document.getElementById('report');
     var restaurant = document.getElementById('restaurant');
@@ -128,13 +128,13 @@ class Home extends Component {
   }
 
   showUsers(e){
-    document.getElementById('manageRestaurant').style.backgroundColor='#fff';
+    document.getElementById('manageRestaurant').style.backgroundColor='#f79361';
     document.getElementById('manageRestaurant').style.fontWeight='normal';
-    document.getElementById('manageReport').style.backgroundColor='#fff';
+    document.getElementById('manageReport').style.backgroundColor='#f79361';
     document.getElementById('manageReport').style.fontWeight='normal';
-    document.getElementById('manageUser').style.backgroundColor='#f79361';
+    document.getElementById('manageUser').style.backgroundColor='#fff';
     document.getElementById('manageUser').style.fontWeight='bold';
-    document.getElementById('manageComment').style.backgroundColor='#fff';
+    document.getElementById('manageComment').style.backgroundColor='#f79361';
     document.getElementById('manageComment').style.fontWeight='normal';
 
     var report = document.getElementById('report');
@@ -149,13 +149,13 @@ class Home extends Component {
   }
 
   showComments(e){
-    document.getElementById('manageRestaurant').style.backgroundColor='#fff';
+    document.getElementById('manageRestaurant').style.backgroundColor='#f79361';
     document.getElementById('manageRestaurant').style.fontWeight='normal';
-    document.getElementById('manageReport').style.backgroundColor='#fff';
+    document.getElementById('manageReport').style.backgroundColor='#f79361';
     document.getElementById('manageReport').style.fontWeight='normal';
-    document.getElementById('manageUser').style.backgroundColor='#fff';
+    document.getElementById('manageUser').style.backgroundColor='#f79361';
     document.getElementById('manageUser').style.fontWeight='normal';
-    document.getElementById('manageComment').style.backgroundColor='#f79361';
+    document.getElementById('manageComment').style.backgroundColor='#fff';
     document.getElementById('manageComment').style.fontWeight='bold';
 
     var report = document.getElementById('report');
@@ -181,7 +181,6 @@ class Home extends Component {
           <button id="manageReport" type="submit" value='manage-reports' onClick={this.showReports}>Manage Reports</button>
           <button id="manageUser" type="submit" value='manage-users' onClick={this.showUsers}>Manage Users</button>
           <button id="manageComment" type="submit" value='manage-comments' onClick={this.showComments}>Manage Comments</button>
-          <button id="managePromo" type="submit" value='mange-promos' onClick={this.handleRouteChange}>Manage Promos</button><br />
        </div>
 
         <section className="content">

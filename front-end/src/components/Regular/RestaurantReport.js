@@ -70,7 +70,8 @@ class RestaurantReport extends Component{
 		return(
 			<div>
 				<form id="reportForm" className="report-div">
-					<select className="report-select" onChange={this.handleCategoryChange}>
+					<h3 className="report-title"> Report Restaurant</h3>
+					<h4 className="report-subtitles">Category: </h4> <select className="report-select" onChange={this.handleCategoryChange}>
 						<option style={{"display": "none"}} hidden>Select Value</option>
 						<option value="closed">Closed</option>
 						<option value="changedLocation">Changed Location</option>
@@ -79,12 +80,8 @@ class RestaurantReport extends Component{
 					</select>
 					
 					<br/>
-					<br/>
+					<h4 className="report-subtitles">Details/Comments: </h4><textarea className="report-textarea" style={{"resize": "none", "width": "280px", "height": "180px"}} placeholder="details" onChange={this.handleDetailsChange}></textarea>
 
-					<textarea className="report-textarea" style={{"resize": "none", "width": "280px", "height": "180px"}} placeholder="details" onChange={this.handleDetailsChange}></textarea>
-
-					<br/>
-					<br/>
 				</form>
 				<div className="profile-buttons-div">
 					<button className="profile-button" type="submit" onClick={this.handleAddReport}>Submit</button>

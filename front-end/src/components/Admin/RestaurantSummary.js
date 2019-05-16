@@ -231,10 +231,10 @@ class RestaurantSummary extends Component {
 
           <div>
             {this.state.top_rated_shops_visibility  ?
-              <div>
-              <h5>Top 10</h5>
+              <div className="tableDiv">
              <table className="summaryTable">
               <th>Restaurant Name</th>
+              <th>Likes</th>
               <th>Ratings</th>
               <th ><em class="fa fa-cog"></em></th>
 
@@ -253,6 +253,9 @@ class RestaurantSummary extends Component {
                     </Link>      
                   </td>
                   <td>
+                    {shop.restaurant_likes}
+                  </td>
+                  <td>
                     {shop.restaurant_rating}
                   </td>
                   <td>
@@ -269,8 +272,8 @@ class RestaurantSummary extends Component {
 
           <div>
             {this.state.new_shops_visibility  ?
-              <div>
-              <h5>Top 10</h5>
+              <div className="tableDiv">
+             
              <table className="summaryTable">
               <th>Restaurant Name</th>
               <th>Likes</th>
@@ -311,11 +314,12 @@ class RestaurantSummary extends Component {
 
           <div>
             {this.state.most_liked_shops_visibility  ?
-              <div>
-              <h5>Top 10</h5>
+              <div className="tableDiv">
+          
              <table className="summaryTable">
               <th>Restaurant Name</th>
               <th>Likes</th>
+              <th>Ratings</th>
               <th ><em class="fa fa-cog"></em></th>
 
               {this.state.most_liked.map((shop) =>{
@@ -336,6 +340,9 @@ class RestaurantSummary extends Component {
                     {shop.restaurant_likes}
                   </td>
                   <td>
+                    {shop.restaurant_rating}
+                  </td>
+                  <td>
                     <button value={shop.restaurant_id} className="fa fa-edit" onClick={this.viewEditShop}></button>
                     <button value={shop.restaurant_id} className="fa fa-trash" onClick={this.deleteShop}></button>
                   </td>
@@ -348,25 +355,18 @@ class RestaurantSummary extends Component {
           </div>
 
           <div>
+    
             {this.state.deleted_shops_visibility  ?
+              <div className="tableDiv">
              <table className="summaryTable">
               <th>Restaurant Name</th>
               <th>Likes</th>
               <th>Ratings</th>
-
               {this.state.deleted.map((shop) =>{
                 return <tr key={shop.restaurant_id}>
 
                   <td>
-                     <Link to={{pathname:  `/restaurant/${shop.restaurant_id}`, 
-                    state: { 
-                      user_id: this.state.user_id, 
-                      username: this.state.username,
-                      user_type: this.state.user_type,
-                      restaurant_id: shop.restaurant_id
-                    } }}>
-                    {shop.restaurant_name}
-                    </Link>      
+                    {shop.restaurant_name}    
                   </td>
                   <td>
                     {shop.restaurant_likes}
@@ -376,11 +376,13 @@ class RestaurantSummary extends Component {
                   </td>
                 </tr>
               })} 
-            
-              </table> : null
+
+              </table> 
+              </div>: null
+
             }
           </div>
-
+  
         </div>
 
       }

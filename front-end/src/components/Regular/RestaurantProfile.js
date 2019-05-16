@@ -42,8 +42,10 @@ class RestaurantProfile extends Component {
       restaurant_openingtime: "",
       restaurant_closingtime: "",
       restaurant_address: "",
-      latitude: "",
-      longitude: "",
+      latitude: 0,
+      longitude: 0,
+      lng: 0,
+      lat: 0,
       is_deleted: false,
       isVisible: true,
       isEditable: false,
@@ -54,8 +56,6 @@ class RestaurantProfile extends Component {
       isRated: false,
       isLikedArray: [],
       isRatedArray: [],
-      lng: 121.243436,
-      lat: 14.167565,
       zoom: 16,
       height: '200px',
       width: '200px',
@@ -96,12 +96,14 @@ class RestaurantProfile extends Component {
               restaurant_openingtime: body.restaurantInfo[0].restaurant_openingtime,
               restaurant_closingtime: body.restaurantInfo[0].restaurant_closingtime,
               restaurant_address: body.restaurantInfo[0].restaurant_address,
-              latitude: body.restaurantInfo[0].latitude,
-              longitude: body.restaurantInfo[0].longitude,
+              lat: body.restaurantInfo[0].latitude,
+              lng: body.restaurantInfo[0].longitude,
               is_deleted: body.restaurantInfo[0].is_deleted,
               resto_photos: body.photos             
         })
         console.log(this.state.resto_photos);
+        console.log(this.state.lat);
+        console.log(this.state.lng);
     })
 
     this.getComments = this.getComments.bind(this);
@@ -143,7 +145,7 @@ class RestaurantProfile extends Component {
     });
 
   var marker = new mapboxgl.Marker()
-    .setLngLat([121.243692, 14.167954])
+    .setLngLat([this.state.lng, this.state.lat])
     .setDraggable(false)
     // .setOffset(1)
     .addTo(map);
@@ -623,8 +625,8 @@ class RestaurantProfile extends Component {
                                             maxLength="360"
                                             ></textarea><br/>
                                           <input type="hidden" name="comment_id" value={comment.comment_id}/>
-                                          <input className="profile-editcomment" type="submit" value="edit"/>
-                                          <input className="profile-deletecomment" type="submit" value="cancel"/>
+                                          <input className="profile-editcomment" type="submit" value="Save"/>
+                                          <input className="profile-deletecomment" type="submit" value="Cancel"/>
                                         </form>
                                         : null
                                       }

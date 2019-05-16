@@ -1,5 +1,6 @@
 .background {
 	display: flex;
+	height: 100vh;
 	width: 100%;
 	flex-flow: row wrap;
 	font-family: CircularStd;
@@ -7,12 +8,12 @@
 	
 .left{
 	height: 100%;
-	width: 10%;
+	width: 5%;
 }
 
 .right{
 	height: 100%;
-	width: 10%;
+	width: 5%;
 }
 
 .adminDashboard{
@@ -22,9 +23,9 @@
 }
 
 .adminDashboard button{
-	width: 80%;
+	width: 70%;
 	font-size: 100%;
-	margin: 3px;
+	margin: 5%;
 	padding: 4%;
 	border: 2px solid #f79361;
 	border-radius: 2px;
@@ -32,33 +33,34 @@
 }
 
 #manageRestaurant {
-	background-color: #f79361;
+	background-color: #fff;
 	font-weight: bold;
 }
 
 #manageReport {
-	background-color: #fff;
+	background-color: #f79361;
 	font-weight: normal;
 }
 
 #manageUser {
-	background-color: #fff;
+	background-color: #f79361;
 	font-weight: normal;
 }
 
 #manageComment {
-	background-color: #fff;
+	background-color: #f79361;
 	font-weight: normal;
 }
 
 #managePromo {
-	background-color: #fff;
+	background-color: #f79361;
 	font-weight: normal;
 }
 
 .content{
 	height: 100%;
 	width: 55%;
+	margin-top: 1%;
 	/*border: 2px solid #f79361;*/
 }
 
@@ -79,44 +81,72 @@
 }
 
 /*Add shop*/
-.notifyError{
-	color:red;
-}
-
 .addShop{
-	display: flex;
-	flex-flow: row wrap;
-	overflow: hidden;
-	justify-content: space-between;
 	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-flow: row wrap;
 }
 
-.addTime {
-	margin-top: 2%;
+.addShopButton{
 	margin: auto;
+	width: 35%;
+	border:none;
+	margin-top: 2%;
+	background-color: #f79361;
 }
 
-.addShop input {
+
+#addName{
 	width: 45%;
-	padding: 2%;
 	margin-top: 2%;
 }
 
-.addShop select {
-	width: 49.5%;
-	padding: 2%;
-	margin-top: 2%;
-}
-
-.addShopButton {
-	width: 49.5%;
-	padding: 2%;
+#addPrice{
+	width: 45%;
 	margin-top: 2%;	
-	font-family: CircularStd;
-	font-size: 15px;
-	margin-left: 25%;
 }
 
+#addAddress{
+	width: 100%;
+	margin-top: 2%;
+}
+
+#addLat{
+	width: 45%;
+	margin-top: 2%;
+}
+
+#addLong{
+	margin-left: 10%;
+	width: 45%;
+	vertical-align: right;
+	margin-top: 2%;
+}
+
+#addCuisine{
+	width: 45%;
+	margin-top: 2%;
+}
+
+#addType{
+	width: 45%;
+	margin-top:2%;
+}
+
+.addTime{
+	margin-top: 2%;
+}
+
+#addDayForm{
+	width: 65%;
+	margin-top: 3%;
+}
+
+#addDay{
+	margin-left: 3%;
+}
 /*Summary*/
 
 #liked {
@@ -136,10 +166,16 @@
 #deleted {
 	display: block;
 }
-	
+
+
+.tableDiv{
+	overflow-y:scroll;
+	height: 50vh;
+}
+
 .summaryTable{
 	border-collapse: collapse;
-	width: 80%;
+	width: 100%;
 	font-family: CircularStd;
 }
 
@@ -154,6 +190,8 @@
   text-align: center;
   padding: 10px;
 }
+
+
 
 
 .summaryButton{
@@ -181,7 +219,7 @@
 	color: green;
 }
 
-.editDeleteTable{
+/*.editDeleteTable{
 	border-collapse: collapse;
 	width: 80%;
 	margin-top: 5%;
@@ -198,7 +236,7 @@
   border: 1px solid black;
   text-align: center;
   padding: 10px;
-}
+}*/
 
 .editDeleteShop {
 	display: flex;
@@ -237,7 +275,6 @@
    background-color: #fff;
   margin: 15% auto;
   border: 1px solid #888;
-  padding-top: 5%;
   padding-left: 2.5%;
   padding-bottom: 2%;
 }
@@ -302,15 +339,16 @@
 }
 	
 .reportButton{
-	width: 18%;
+	width: 19%;
 	padding: 1%;
 	margin: 3px;
 	background: #fff;
 	border: 2px solid #f79361;
 	border-radius: 2px;
+	height: 
 }
 
-.reportTable{
+/*.reportTable{
 	border-collapse: collapse;
 	width: 100%;
 }
@@ -325,7 +363,7 @@
   border: 1px solid black;
   text-align: center;
   padding: 10px;
-}
+}*/
 
 /*users*/
 	
@@ -340,15 +378,6 @@
 	width: 45vw;
 }
 
-.userAction button {
-	width: 30%;
-	padding: 2%;
-	margin-top: 2%;	
-	margin-left: 30%;
-	font-family: CircularStd;
-	font-size: 15px;
-
-}
 
 .userTable{
 	border-collapse: collapse;
@@ -372,7 +401,8 @@
 	
 	margin-top: 10%;
 }
-.commentTable{
+
+/*.commentTable{
 border-collapse: collapse;
 }
 
@@ -386,4 +416,4 @@ border-collapse: collapse;
   border: 1px solid black;
   text-align: center;
   padding: 10px;
-}
+}*/

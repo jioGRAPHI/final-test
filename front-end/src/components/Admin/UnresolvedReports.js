@@ -68,8 +68,8 @@ class UnresolvedReports extends Component {
         </div>
         */}
        
-        
-        <table className="reportTable">
+        <div className="tableDiv">
+        <table className="summaryTable">
           <th>ID</th>
           <th>Category</th>
           <th>Details</th>
@@ -99,6 +99,7 @@ class UnresolvedReports extends Component {
             })} 
             
         </table>
+        </div>
       </div>
     );
   }

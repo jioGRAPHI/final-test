@@ -215,7 +215,7 @@ class EditShopOnProfile extends Component {
     return (
       <div>     
           <div>
-            <h1>Restaurant Info</h1>
+            <h1 className="edit-title">Restaurant Info</h1>
             <div className="edit-input-div">
               <label className="label"> <strong>ID: </strong> { restaurant_id } </label>
             </div>

@@ -18,7 +18,7 @@ class AddShop extends Component {
       latitude: 0,
       longitude: 0,
       status:'',
-      time: ['8:00', '8:00'],
+      time: ['10:00', '22:00'],
       error: [], 
       add_done: false
     }
@@ -180,12 +180,20 @@ class AddShop extends Component {
       <section>
 
         <div className="addShop">
-          <input type="text" name="restaurant_name" placeholder="Name" onChange={this.handleRestaurantName}/> <br />
-          <input type="text" name="restaurant_address" placeholder="Address" onChange={this.handleRestaurantAddress}/> <br />
-          <input type="text" name="latitude" placeholder="Latitude" onChange={this.handleRestaurantLatitude}/> <br />
-          <input type="text" name="longitude" placeholder="Longitude" onChange={this.handleRestaurantLongitude}/> <br />
-          <br />
-          <select onChange={this.handleRestaurantCuisine}>
+          <input id="addName" type="text" name="restaurant_name" placeholder="Name" onChange={this.handleRestaurantName}/> 
+
+           <select id ="addPrice" onChange={this.handlePriceRangeChange}>
+            <option value='1' disabled>Price Range (defualt ₱)</option>
+            <option value='1' >₱</option>
+            <option value='2'>₱₱</option>
+            <option value='3'>₱₱₱</option>
+          </select>
+
+          <input id="addAddress" type="text" name="restaurant_address" placeholder="Address" onChange={this.handleRestaurantAddress}/> 
+          <input id="addLat" type="text" name="latitude" placeholder="Latitude" onChange={this.handleRestaurantLatitude}/> 
+          <input id="addLong" type="text" name="longitude" placeholder="Longitude" onChange={this.handleRestaurantLongitude}/> 
+
+          <select id="addCuisine" onChange={this.handleRestaurantCuisine}>
             <option value='American' disabled>Cuisine (default 'American')</option>
             <option value='American' >American</option>
             <option value='Chinese'>Chinese</option>
@@ -198,7 +206,7 @@ class AddShop extends Component {
             <option value='Others'>Others</option>
           </select>
 
-          <select onChange={this.handleRestaurantType}>
+          <select id="addType" onChange={this.handleRestaurantType}>
             <option value='Eatery' disabled>Price Range (default 'Eatery')</option>
             <option value='Eatery' >Eatery</option>
             <option value='Canteen'>Canteen</option>
@@ -207,31 +215,29 @@ class AddShop extends Component {
             <option value='Others'>Others</option>
           </select>
 
-          <select onChange={this.handlePriceRangeChange}>
-            <option value='1' disabled>Price Range (defualt ₱)</option>
-            <option value='1' >₱</option>
-            <option value='2'>₱₱</option>
-            <option value='3'>₱₱₱</option>
-          </select>
-
           <TimeRangePicker className="addTime" onChange={this.changeTime} value={this.state.time} disableClock={true} required={true}/>
-         
 
+          <form id="addDayForm" action="">
+            <input id="addDay" type="radio"  /> Mon
+            <input id="addDay" type="radio"  /> Tue  
+            <input id="addDay" type="radio" /> Wed  
+            <input id="addDay" type="radio"  /> Thurs  
+            <input id="addDay" type="radio"  /> Fri  
+            <input id="addDay" type="radio" /> Sat  
+            <input id="addDay" type="radio" /> Sun  
+          </form>
 
+          <button className="addShopButton" type="submit" onClick={this.handleAddShop}>Add Restaurant</button>
 
-         {/*<Upload />*/ }
-
-          <br />
-          <button className="addShopButton" type="submit" onClick={this.handleAddShop}>Add Shop </button>
         </div>
-        {this.state.error.map((err) => {
+        
+         {this.state.error.map((err) => {
           return(
             <div className="notifyError">
               {err}
             </div>
           )
         })
-
         }
       </section>
     );

@@ -110,7 +110,7 @@ class Ratedmore extends Component {
                               <ReactImageFallback className="morefeedimages" src={'/images/test.jpg'} fallbackImage={notfound} alt="Report to administrator for missing images"/>
                               <div>
                                 <div className="feed-title">
-                                  <h4 className="restaurant-title">{resto.restaurant_name}</h4>
+                                  <h4 className="feed-title-h4">{resto.restaurant_name}</h4>
                                 </div>
                               </div>
                               <Link to={{pathname: `/restaurant/${resto.restaurant_id}`, 
